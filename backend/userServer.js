@@ -10,17 +10,17 @@ var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function() {
   // we're connected!
-  console.log("Connected to db userlist");
+  console.log("Connected to db userList");
 });
 
 //body parser middleware
 app.use(bodyParser.json());
 
 //user routes
-app.get("/users", requestHandlers.getUsers);
-app.post("/users", requestHandlers.createUser);
-app.delete("/users", requestHandlers.deleteUser);
-app.put("/users", requestHandlers.updateUser);
+app.get("/api/users", requestHandlers.getUsers);
+app.post("/api/users", requestHandlers.createUser);
+app.delete("/api/users", requestHandlers.deleteUser);
+app.put("/api/users", requestHandlers.updateUser);
 
 app.listen(8888, () => {
   console.log("Server started on port 8888");
