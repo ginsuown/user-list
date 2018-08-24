@@ -11,7 +11,7 @@ const users = (state = initState, action) => {
     case "USER_FETCH_FAIL":
       return {
         ...state,
-        error: action.error,
+        err: action.err,
         isFetching: false
       };
     case "USER_FETCH_SUCCESS":
