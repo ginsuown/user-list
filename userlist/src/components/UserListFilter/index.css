@@ -1,0 +1,38 @@
+.SortHeader {
+  display: flex;
+  width: 100%;
+  font-weight: bold;
+  border-bottom: 1px solid darkgray;
+}
+
+.SortHeaderItem {
+  width: 100%;
+}
+
+.SortTitle {
+  cursor: pointer;
+  color: rgb(28, 139, 243);
+}
+
+.SortTitleActive {
+  cursor: pointer;
+  color: rgb(21, 99, 172);
+}
+
+.ArrowIcon {
+  position: relative;
+  margin-left: 5px;
+}
+
+.UpIcon {
+  bottom: 5px;
+}
+
+.DownIcon {
+  top: 5px;
+}
+
+.EditDelete {
+  flex-grow: 0;
+  margin-right: 10px;
+}

@@ -1,20 +1,19 @@
 import React, { Component } from "react";
 import "./index.css";
+import UserListTableContainer from "../../containers/UserListTableContainer";
+import UserListFilterContainer from "../../containers/UserListFilterContainer";
 
 class UserList extends Component {
-  componentDidMount() {
-    this.props.fetchUsers();
+  constructor(props) {
+    super(props);
   }
 
   render() {
     return (
-      <div>
-        <p>Hello world</p>
-        <button onClick={this.props.fetchUsers}>GET DATA</button>
-        {this.props.users.data.map(item => {
-          return <p key={item._id}>{item.fName}</p>;
-        })}
-        <p>Error: {JSON.stringify(this.props.users.err)}</p>
+      <div className="UserList">
+        <h1>Users</h1>
+        <UserListFilterContainer />
+        <UserListTableContainer />
       </div>
     );
   }

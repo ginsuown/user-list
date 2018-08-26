@@ -1,0 +1,36 @@
+.UserListItem {
+  display: flex;
+  width: 100%;
+  padding-top: 8px;
+}
+
+.ItemProperty {
+  width: 100%;
+}
+
+.Trash {
+  cursor: pointer;
+  color: rgb(202, 86, 86);
+  margin-left: 15px;
+  margin-right: 20px;
+  padding: 5px 8px 5px 8px;
+}
+
+.Trash:hover {
+  color: rgb(172, 68, 68);
+}
+
+.Edit {
+  cursor: pointer;
+  color: rgb(16, 160, 105);
+  padding: 5px 5px 5px 7px;
+}
+
+.Edit:hover {
+  color: rgb(12, 128, 83);
+}
+
+.Icon {
+  flex-grow: 0;
+  border-radius: 5px;
+}
