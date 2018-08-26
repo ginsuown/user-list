@@ -11,6 +11,9 @@ class UserListTableContainer extends Component {
         isFetching={this.props.isFetching}
         err={this.props.err}
         fetchUsers={this.props.fetchUsers}
+        filter={this.props.filter}
+        sortBy={this.props.sortBy}
+        sortDesc={this.props.sortDesc}
       />
     );
   }

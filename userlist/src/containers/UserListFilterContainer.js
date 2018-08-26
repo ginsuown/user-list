@@ -7,7 +7,6 @@ class UserListFilterContainer extends Component {
   render() {
     return (
       <UserListFilter
-        filter={this.props.filter}
         sortBy={this.props.sortBy}
         sortDesc={this.props.sortDesc}
         updateFilter={this.props.updateFilter}
@@ -20,7 +19,6 @@ class UserListFilterContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    //filter: state.filter.filter,
     sortBy: state.filter.sortBy,
     sortDesc: state.filter.sortDesc
   };
