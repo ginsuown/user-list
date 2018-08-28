@@ -1,19 +1,46 @@
 import React, { Component } from "react";
 import "./index.css";
 import UserListItem from "../UserListItem";
+import Modal from "../Modal";
 import PageNumbersContainer from "../../containers/PageNumbersContainer";
+import axios from "axios";
 
 class UserListTable extends Component {
   constructor(props) {
     super(props);
+    this.state = { deleteModal: false, deleteIndex: "" };
   }
 
   componentDidMount() {
     this.props.fetchUsers();
   }
 
+  //Set page
   selectPage = page => {
     this.setState({ page: page });
+  };
+
+  //Show modal
+  showModal = index => {
+    this.setState({ deleteModal: true, deleteIndex: index });
+  };
+
+  //Hide modal
+  cancelModal = () => {
+    this.setState({ deleteModal: false, deleteIndex: "" });
+  };
+
+  //Delete user
+  submitModal = () => {
+    //API call to delete user
+    axios({
+      method: "delete",
+      url: "/api/users",
+      data: { id: this.state.deleteIndex }
+    }).then(response => {
+      this.props.fetchUsers();
+    });
+    this.setState({ deleteModal: false, deleteIndex: "" });
   };
 
   //helper function to determine if given index is in current selected page
@@ -80,11 +107,25 @@ class UserListTable extends Component {
                   lName={item.lName}
                   age={item.age}
                   sex={item.sex}
+                  password={item.password}
+                  deleteUser={() => this.showModal(item._id)}
+                  _id={item._id}
+                  fetchUsers={this.props.fetchUsers}
                 />
               </div>
             );
           })}
         <PageNumbersContainer numItems={filteredData.length} />
+        <Modal
+          visible={this.state.deleteModal}
+          width={300}
+          title="Delete User"
+          content="Are you sure you want to delete this user?"
+          buttonText="Delete"
+          cancelButtonText="Cancel"
+          submitButton={this.submitModal}
+          cancelButton={this.cancelModal}
+        />
       </div>
     );
   }

@@ -1,2 +1,17 @@
-.UserList {
+.AddUserButton {
+  margin-top: 10px;
+  cursor: pointer;
+  border: none;
+  color: white;
+  background-color: rgb(38, 156, 101);
+  border-radius: 5px;
+  padding: 8px;
+}
+
+.AddUserButton:hover {
+  background-color: rgb(30, 121, 78);
+}
+
+.AddUser {
+  margin-right: 10px;
 }
