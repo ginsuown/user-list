@@ -14,6 +14,7 @@ class UserListTableContainer extends Component {
         filter={this.props.filter}
         sortBy={this.props.sortBy}
         sortDesc={this.props.sortDesc}
+        page={this.props.page}
       />
     );
   }
@@ -26,7 +27,8 @@ const mapStateToProps = state => {
     err: state.users.err,
     filter: state.filter.filter,
     sortBy: state.filter.sortBy,
-    sortDesc: state.filter.sortDesc
+    sortDesc: state.filter.sortDesc,
+    page: state.page.page
   };
 };
 

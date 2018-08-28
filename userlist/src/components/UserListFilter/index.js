@@ -12,6 +12,7 @@ class UserListFilter extends Component {
   updateFilterInput = e => {
     this.setState({ filterInput: e.target.value });
     this.props.updateFilter(e.target.value);
+    this.props.resetPage();
   };
 
   //helper function to toggle a sort header

@@ -1,28 +1,33 @@
 import React, { Component } from "react";
 import "./index.css";
 import UserListItem from "../UserListItem";
+import PageNumbersContainer from "../../containers/PageNumbersContainer";
 
-class UserList extends Component {
+class UserListTable extends Component {
   constructor(props) {
     super(props);
-    this.state = { page: 0 };
   }
 
   componentDidMount() {
     this.props.fetchUsers();
   }
 
+  selectPage = page => {
+    this.setState({ page: page });
+  };
+
   //helper function to determine if given index is in current selected page
   inPage = index => {
     return (
-      index >= this.state.page * 10 && index <= (this.state.page + 1) * 10 - 1
+      index >= (this.props.page - 1) * 10 && index <= this.props.page * 10 - 1
     );
   };
 
+  //process data with seleted filter and sort parameters
   filterAndSort = () => {
     const { data, filter, sortBy, sortDesc } = this.props;
 
-    //object to sort parameter to API name
+    //object to map parameter to API name
     const mapName = {
       "First Name": "fName",
       "Last Name": "lName",
@@ -43,6 +48,7 @@ class UserList extends Component {
         );
       });
     }
+    //return array in sorted order according to sort selection
     if (sortBy) {
       filteredData.sort((a, b) => {
         const first = a[mapName[sortBy]];
@@ -58,24 +64,30 @@ class UserList extends Component {
   };
 
   render() {
+    const filteredData = this.filterAndSort();
     return (
       <div className="UserListTable">
-        {this.filterAndSort().map(item => {
-          return (
-            <div className="ListItem">
-              <UserListItem
-                key={item._id}
-                fName={item.fName}
-                lName={item.lName}
-                age={item.age}
-                sex={item.sex}
-              />
-            </div>
-          );
-        })}
+        {filteredData
+          .filter((item, index) => {
+            return this.inPage(index);
+          })
+          .map(item => {
+            return (
+              <div className="ListItem">
+                <UserListItem
+                  key={item._id}
+                  fName={item.fName}
+                  lName={item.lName}
+                  age={item.age}
+                  sex={item.sex}
+                />
+              </div>
+            );
+          })}
+        <PageNumbersContainer numItems={filteredData.length} />
       </div>
     );
   }
 }
 
-export default UserList;
+export default UserListTable;

@@ -1,8 +1,8 @@
 .SortHeader {
   display: flex;
-  width: 100%;
   font-weight: bold;
-  border-bottom: 1px solid darkgray;
+  border-bottom: 1px solid rgb(21, 99, 172);
+  padding-left: 10px;
 }
 
 .SortHeaderItem {
@@ -12,6 +12,10 @@
 .SortTitle {
   cursor: pointer;
   color: rgb(28, 139, 243);
+}
+
+.SortTitle:hover {
+  color: rgb(21, 99, 172);
 }
 
 .SortTitleActive {
@@ -25,11 +29,9 @@
 }
 
 .UpIcon {
-  bottom: 5px;
 }
 
 .DownIcon {
-  top: 5px;
 }
 
 .EditDelete {
